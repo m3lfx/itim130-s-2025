@@ -1,0 +1,42 @@
+crud operations
+create read update delete
+mysql administration access privileges right, backup and restore, transaction
+c++ vbnet java php laravel javascript react, react native java, 
+mysql nosql mongodb
+
+mike,test,blc taguig,1630,2020-01-09
+
+int counter = 0
+string name = ""
+NULL absence of value
+
+last_name  NOT NULL string
+phone NULL string 
+birthday NOT NULL date
+height NULL
+weight NULL
+address NOT NULL
+province address NULL 
+grade not null float
+2025-05-08
+05/05/2025 
+order_status enum('processing','canceled', 'delivered')
+
+
+customer  one-to-many   order           order_product                           product         supplier_product  supplier 
+customer_id             order_id        order_id(fk)  product_id(fk) quantity        product_id                          supplier_id
+name                    date_ordered      1                 1            3           name 
+                                                                             
+address                 date_delivered     1               2             4           
+phone                   status             1                 3           1       
+                        customer_id(fk)
+                        
+                                                             
+
+course  one-to-many      subject  many-to-many  student 
+
+course                                 subject                                       student_subject                   student 
+course_id  name     description        subject_code    name     units   course_id    student_id     subject_id  grade        student_id   name   address   course  
+  1        bsit     it                 1              prog 1      2       1             1            1           5.0               1          mike    blc       bsit       
+                                       2              prog 2     1        1             2            1           5.0               2          test    blc       bsit 
+  2        bsee    ee                  3              ee1        3        2
