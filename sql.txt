@@ -32,3 +32,9 @@ ORDER BY name DESC;
 SELECT item_id, name, sell_price 
 FROM items
 ORDER BY sell_price DESC;
+
+fetch top 3 expensive items
+SELECT item_id, name, sell_price 
+FROM items
+LIMIT 10
+ORDER BY sell_price DESC
