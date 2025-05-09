@@ -38,3 +38,25 @@ SELECT item_id, name, sell_price
 FROM items
 LIMIT 3,2
 ORDER BY sell_price DESC
+
+SELECT item_id, name, sell_price, cost_price
+FROM items
+
+INSERT INTO items(name, cost_price, sell_price, quantity, supplier_name)
+VALUES('softdrinks', 5, 6, 100, 'pepsi')
+
+//distinct
+
+SELECT DISTINCT name, cost_price
+FROM items;
+
+SELECT  DISTINCT name, supplier_name
+FROM items;
+
+//column alias
+
+SELECT  name AS product, supplier_name AS supplier
+FROM items;
+
+SELECT  name AS 'product name', supplier_name AS 'supplier name'
+FROM items;
