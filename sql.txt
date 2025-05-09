@@ -86,3 +86,26 @@ SELECT supplier_name, name, cost_price
 FROM items
 WHERE supplier_name = 'pepsi' and cost_price >= 5
 
+INSERT INTO items(name, cost_price, sell_price, quantity, supplier_name)
+VALUES('tuna', 5, 6, 100, NULL);
+
+INSERT INTO items(name, cost_price, sell_price, quantity, supplier_name)
+VALUES(1, 5, 6, 100, NULL);
+
+select supplier_name
+from items
+WHERE supplier_name IS NOT NULL;
+
+select supplier_name
+from items
+WHERE supplier_name != 'PEPSI';
+
+select supplier_name
+from items
+WHERE  BINAY supplier_name = 'PEPSI';
+
+fetch items that has a 's' on their name
+SELECT * 
+FROM items
+WHERE name LIKE '%s%';
+
