@@ -70,5 +70,14 @@ WHERE name = 'softdrinks';
 items selling price is greater than 5
 SELECT *
 FROM items
-WHERE sell_price >= 5 ;
+WHERE sell_price >= 5 
+ORDER BY sell_price DESC
+LIMIT 3;
+
+fetch items that has cost price is greater than 3 and sell_price is less than 8
+SELECT *
+FROM items
+WHERE cost_price > 3 OR sell_price < 8 
+ORDER BY sell_price DESC
+LIMIT 3;
 
