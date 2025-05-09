@@ -60,3 +60,15 @@ FROM items;
 
 SELECT  name AS `product name`, supplier_name AS 'supplier name'
 FROM items;
+
+conditional statements
+
+SELECT *
+FROM items
+WHERE name = 'softdrinks';
+
+items selling price is greater than 5
+SELECT *
+FROM items
+WHERE sell_price >= 5 ;
+
