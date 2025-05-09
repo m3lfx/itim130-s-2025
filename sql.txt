@@ -58,5 +58,5 @@ FROM items;
 SELECT  name AS product, supplier_name AS supplier
 FROM items;
 
-SELECT  name AS 'product name', supplier_name AS 'supplier name'
+SELECT  name AS `product name`, supplier_name AS 'supplier name'
 FROM items;
