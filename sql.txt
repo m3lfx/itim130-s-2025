@@ -1,0 +1,18 @@
+Structured Query Language 
+SELECT 
+INSERT
+UPDATE
+DELETE
+
+INSERT INTO table_name (col1, col2, coln)
+VALUES('val1', 2, NULL);
+
+INSERT INTO items(item_id, name, cost_price, sell_price, quantity, supplier_name)
+VALUES(1, 'computer', 12.34, 15.00, 10, 'apple');
+
+SELECT * FROM table_name;
+
+SELECT * FROM items;
+
+INSERT INTO items( name, cost_price, sell_price, quantity, supplier_name)
+VALUES('laptop', 5.67, 8.90, 10, 'acer');
