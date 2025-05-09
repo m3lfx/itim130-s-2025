@@ -81,3 +81,8 @@ WHERE cost_price > 3 OR sell_price < 8
 ORDER BY sell_price DESC
 LIMIT 3;
 
+fetch items from supplier pepsi that has cost_price > 5
+SELECT supplier_name, name, cost_price
+FROM items
+WHERE supplier_name = 'pepsi' and cost_price >= 5
+
