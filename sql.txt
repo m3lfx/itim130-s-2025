@@ -158,5 +158,18 @@ SELECT customer_id, last_name, city FROM customers
 WHERE city  BETWEEN 'A' AND 'N'
 
 orders rows
-INSERT INTO orders(date_ordered, date_delivery, status, customers_customer_id)
-VALUES('2025-05-15', NULL, 'processing', 1);
+INSERT INTO orders(date_ordered, date_delivery, status, customer_id)
+VALUES('2025-05-15', NULL, 'processing', 15);
+
+INSERT INTO orders(date_ordered, date_delivery, status, customer_id)
+VALUES(now(), NULL, 'processing', 2);
+
+
+select DATE_FORMAT(now(), '%D of %M %Y %H:%i.%s %p')
+SELECT order_id, DATE_FORMAT(date_ordered, '%D \tof %M %Y') FROM orders;
+
+select DAYNAME(date_add(curdate(), INTERVAL 5000 year))
+
+SELECT dayname(date_add(curdate(), INTERVAL 20 DAY))
+
+SELECT (date_add(now(), INTERVAL 100 DAY))
