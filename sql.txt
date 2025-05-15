@@ -223,10 +223,58 @@ DELETE FROM items WHERE item_id = 1
 DELETE FROM orderline WHERE item_id = 1
 
 CREATE TABLE IF NOT EXISTS `db_sales_s_2025`.`products` (
-  `item_id` INT NOT NULL AUTO_INCREMENT,
+  `product_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `cost_price` DECIMAL(3,2) NULL,
   `sell_price` DECIMAL(3,2) NULL,
   `quantity` INT NULL,
   `supplier_name` VARCHAR(45) NULL,
-  PRIMARY KEY (`item_id`))
+  PRIMARY KEY (`product_id`))
+
+  INSERT INTO products(name, cost_price, sell_price, quantity, supplier_name)
+VALUES('softdrinks', 5, 6, 100, 'coca cola'), 
+('biscuits', 4, 5, 90, 'skyflakes'), 
+('bottled water', 4, 6, 80, 'tubig'),
+('tocino', 3, 5, 15, 'taguigs best')
+
+table join
+
+
+SELECT customers.customer_id, customers.last_name, orders.order_id, orders.date_ordered, orders.status 
+FROM customers, orders 
+WHERE customers.customer_id = orders.customer_id
+
+fetch all orders with their customers that are processing
+
+SELECT customers.customer_id, customers.last_name, orders.order_id, orders.date_ordered, orders.status 
+FROM customers, orders 
+WHERE customers.customer_id = orders.customer_id
+AND orders.status = 'processing'
+
+update order date 
+UPDATE orders SET date_ordered = '2025-06-01' where order_id = 1
+
+fetch orders for the month of may
+SELECT customers.customer_id, customers.last_name, orders.order_id, orders.date_ordered, orders.status 
+FROM customers, orders 
+WHERE customers.customer_id = orders.customer_id
+AND orders.status = 'processing'
+
+SELECT customers.customer_id, customers.last_name, orders.order_id, orders.date_ordered, orders.status 
+FROM customers, orders 
+WHERE customers.customer_id = orders.customer_id
+AND date_ordered >= '2025-05-01' AND date_ordered <= '2025-05-31'
+
+SELECT c.customer_id, c.last_name, o.order_id, o.date_ordered, o.status 
+FROM customers c, orders o
+WHERE c.customer_id = o.customer_id
+AND o.date_ordered BETWEEN '2025-05-01' AND '2025-05-31'
+
+FETCH ORDERS for month of june
+SELECT c.customer_id, c.last_name, o.order_id, DATE_FORMAT(o.date_ordered, '%D of %M %Y'), o.status 
+FROM customers c, orders o
+WHERE c.customer_id = o.customer_id
+AND monthname(o.date_ordered) = 'june'
+
+SELECT c.customer_id, c.last_name, o.order_id, DATE_FORMAT(o.date_ordered, '%D of %M %Y'), o.status 
+FROM  customers c, orders o
