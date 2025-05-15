@@ -214,3 +214,19 @@ WHERE order_id IN (3, 4)
 
 UPDATE orders SET date_delivery = DATE_ADD(date_ordered, INTERVAL 5 DAY), status = "delivered" 
 WHERE order_id = 5
+
+UPDATE items SET supplier_name = "coca cola"
+
+DELETE 
+DELETE FROM items WHERE item_id = 1
+
+DELETE FROM orderline WHERE item_id = 1
+
+CREATE TABLE IF NOT EXISTS `db_sales_s_2025`.`products` (
+  `item_id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `cost_price` DECIMAL(3,2) NULL,
+  `sell_price` DECIMAL(3,2) NULL,
+  `quantity` INT NULL,
+  `supplier_name` VARCHAR(45) NULL,
+  PRIMARY KEY (`item_id`))
