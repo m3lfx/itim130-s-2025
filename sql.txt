@@ -109,7 +109,7 @@ SELECT *
 FROM items
 WHERE name LIKE '%s%';
 
-INSERT INTO `customer` (`first_name`, `last_name`, `address`, `city`, `phone`) VALUES
+INSERT INTO `customers` (`first_name`, `last_name`, `address`, `city`, `phone`) VALUES
 ('Jenny', 'Stones', '27 Rowan Avenue', 'Hightown',  '023 9876'),
 ('Andrew', 'Stones', '52 The Willows', 'Lowtown',  '876 3527'),
 ('Alex', 'Matthew', '4 The Street', 'Nicetown',  '010 4567'),
@@ -125,5 +125,14 @@ INSERT INTO `customer` (`first_name`, `last_name`, `address`, `city`, `phone`) V
 ('Laura', 'Hardy', '73 Margarita Way', 'Oxbridge',  '821 2335'),
 ('Bill', 'O\'Neill', '2 Beamer Street', 'Welltown',  '435 1234'),
 ('David', 'Hudson', '4 The Square', 'Milltown',  '961 4526');
+
+select customer with first name that has exactly four characters
+
+SELECT * FROM customers
+WHERE first_name LIKE '____'
+
+fetch customers having first names that has an 'e' as second character.
+SELECT * FROM customers
+WHERE first_name LIKE '_e%'
 
 
