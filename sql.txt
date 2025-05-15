@@ -203,3 +203,14 @@ VALUES(now(), DATE_ADD(now(), INTERVAL 5 DAY), 'processing', 15);
 SELECT MAX(order_id) from orders
 INSERT INTO orderline (order_id, item_id, quantity)
 VALUES(LAST_INSERT_ID(), 1, 1)
+
+UPDATE
+
+UPDATE orders SET date_delivery = '2025-06-30', status = "delivered" 
+WHERE order_id = 1
+
+UPDATE orders SET date_delivery = now(), status = "delivered" 
+WHERE order_id IN (3, 4)
+
+UPDATE orders SET date_delivery = DATE_ADD(date_ordered, INTERVAL 5 DAY), status = "delivered" 
+WHERE order_id = 5
