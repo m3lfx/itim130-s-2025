@@ -177,4 +177,29 @@ SELECT DATE_FORMAT(date_add(now(), INTERVAL 100 DAY), '%a, %D of %M %Y')
 SELECT date_add(now(), INTERVAL-200 YEAR)
 
 INSERT INTO orders(date_ordered, date_delivery, status, customer_id)
-VALUES(now(), DATE_ADD(now(), INTERVAL 5 DAY), 'processing', 3);
+VALUES(now(), DATE_ADD(now(), INTERVAL 5 DAY), 'processing', 15);
+
+INSERT INTO orderline (order_id, item_id, quantity)
+VALUES(1, 1, 1), (1, 2, 1)
+
+INSERT INTO orderline (order_id, item_id, quantity)
+VALUES(3, 5, 1), (3, 6, 1), (3, 3, 2)
+
+INSERT INTO orderline (order_id, item_id, quantity)
+VALUES(4, 1, 1)
+
+INSERT INTO orderline (order_id, item_id, quantity)
+VALUES(5, 1, 1)
+
+INSERT INTO orderline (order_id, item_id, quantity)
+VALUES(6, 5, 1), (6, 6, 1), (6, 3, 2)
+
+INSERT INTO orderline (order_id, item_id, quantity)
+VALUES(7, 1, 1), (7, 2, 1), (7, 3, 2), (7, 4, 5), (7, 5, 10), (7, 6, 3)
+
+INSERT INTO orders(date_ordered, date_delivery, status, customer_id)
+VALUES(now(), DATE_ADD(now(), INTERVAL 5 DAY), 'processing', 15);
+
+SELECT MAX(order_id) from orders
+INSERT INTO orderline (order_id, item_id, quantity)
+VALUES(LAST_INSERT_ID(), 1, 1)
