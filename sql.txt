@@ -109,3 +109,21 @@ SELECT *
 FROM items
 WHERE name LIKE '%s%';
 
+INSERT INTO `customer` (`first_name`, `last_name`, `address`, `city`, `phone`) VALUES
+('Jenny', 'Stones', '27 Rowan Avenue', 'Hightown',  '023 9876'),
+('Andrew', 'Stones', '52 The Willows', 'Lowtown',  '876 3527'),
+('Alex', 'Matthew', '4 The Street', 'Nicetown',  '010 4567'),
+('Adrian', 'Matthew', 'The Barn', 'Yuleville',  '487 3871'),
+('Simon', 'Cozens', '7 Shady Lane', 'Oakenham',  '514 5926'),
+('Neil', 'Matthew', '5 Pasture Lane', 'Nicetown',  '267 1232'),
+('Richard', 'Stones', '34 Holly Way', 'Bingham',  '342 5982'),
+('Ann', 'Stones', '34 Holly Way', 'Bingham', '342 5982'),
+('Christine', 'Hickman', '36 Queen Street', 'Histon',  '342 5432'),
+('Mike', 'Howard', '86 Dysart Street', 'Tibsville',  '505 5482'),
+('Dave', 'Jones', '54 Vale Rise', 'Bingham',  '342 8264'),
+('Richard', 'Neill', '42 Thatched Way', 'Winnersby',  '505 6482'),
+('Laura', 'Hardy', '73 Margarita Way', 'Oxbridge',  '821 2335'),
+('Bill', 'O\'Neill', '2 Beamer Street', 'Welltown',  '435 1234'),
+('David', 'Hudson', '4 The Square', 'Milltown',  '961 4526');
+
+
