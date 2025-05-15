@@ -170,6 +170,11 @@ SELECT order_id, DATE_FORMAT(date_ordered, '%D \tof %M %Y') FROM orders;
 
 select DAYNAME(date_add(curdate(), INTERVAL 5000 year))
 
-SELECT dayname(date_add(curdate(), INTERVAL 20 DAY))
+SELECT dayname(date_add(curdate(), INTERVAL-20 DAY))
 
-SELECT (date_add(now(), INTERVAL 100 DAY))
+SELECT DATE_FORMAT(date_add(now(), INTERVAL 100 DAY), '%a, %D of %M %Y')
+
+SELECT date_add(now(), INTERVAL-200 YEAR)
+
+INSERT INTO orders(date_ordered, date_delivery, status, customer_id)
+VALUES(now(), DATE_ADD(now(), INTERVAL 5 DAY), 'processing', 3);
