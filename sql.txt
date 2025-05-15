@@ -135,4 +135,28 @@ fetch customers having first names that has an 'e' as second character.
 SELECT * FROM customers
 WHERE first_name LIKE '_e%'
 
+fetch customers from Bingham or nicetown
+SELECT last_name, city FROM customers
+WHERE city = 'bingham' or city = 'nicetown' or city = 'hightown'
 
+IN Clause
+
+SELECT last_name, city FROM customers
+WHERE BINARY city IN ('bingham', 'nicetown', 'Hightown')
+
+SELECT customer_id, last_name, city FROM customers
+WHERE customer_id IN  (1, 2, 3, 4, 5)
+
+SELECT customer_id, last_name, city FROM customers
+WHERE customer_id >= 1 AND customer_id <= 5
+
+BETWEEN 
+SELECT customer_id, last_name, city FROM customers
+WHERE customer_id  BETWEEN 5 AND 3
+
+SELECT customer_id, last_name, city FROM customers
+WHERE city  BETWEEN 'A' AND 'N'
+
+orders rows
+INSERT INTO orders(date_ordered, date_delivery, status, customers_customer_id)
+VALUES('2025-05-15', NULL, 'processing', 1);

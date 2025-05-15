@@ -50,12 +50,12 @@ CREATE TABLE IF NOT EXISTS `db_sales_s_2025`.`orders` (
   `date_ordered` DATE NULL,
   `date_delivery` DATE NULL,
   `status` ENUM('processing', 'delivered', 'canceled') NOT NULL,
-  `customers_customer_id` INT NOT NULL, 
+  `customer_id` INT NOT NULL, 
   PRIMARY KEY (`order_id`),
-  INDEX `fk_orders_customers_idx` (`customers_customer_id` )  ,
+  INDEX `fk_orders_customers_idx` (`customer_id` )  ,
   CONSTRAINT `fk_orders_customers`
-    FOREIGN KEY (`customers_customer_id`)
-    REFERENCES ` db_sales_s_2025`.`customers` (`customer_id`)
+    FOREIGN KEY (`customer_id`)
+    REFERENCES `db_sales_s_2025`.`customers` (`customer_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -73,12 +73,12 @@ CREATE TABLE IF NOT EXISTS `db_sales_s_2025`.`orderline` (
   INDEX `fk_items_has_orders_items1_idx` (`item_id` ) ,
   CONSTRAINT `fk_items_has_orders_items1`
     FOREIGN KEY (`item_id`)
-    REFERENCES ` db_sales_s_2025`.`items` (`item_id`)
+    REFERENCES `db_sales_s_2025`.`items` (`item_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_items_has_orders_orders1`
     FOREIGN KEY (`order_id`)
-    REFERENCES ` db_sales_s_2025`.`orders` (`order_id`)
+    REFERENCES `db_sales_s_2025`.`orders` (`order_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
