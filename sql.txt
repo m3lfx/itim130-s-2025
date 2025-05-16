@@ -318,3 +318,12 @@ AND i.item_id = ol.item_id
 AND c.customer_id = 15
 ORDER BY o.order_id
 
+fetch all customers from nicetown or bingham and the items they ordered
+
+SELECT o.order_id, c.last_name, c.address, c.city, DATE_FORMAT(o.date_ordered, '%D of %M %Y'), ol.item_id, i.name, ol.quantity
+FROM customers c, orders o, orderline ol, items i
+WHERE c.customer_id = o.customer_id 
+AND o.order_id = ol.order_id
+AND i.item_id = ol.item_id
+AND c.city IN ('nicetown', 'bingham', 'milltown')
+
