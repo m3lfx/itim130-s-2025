@@ -360,6 +360,13 @@ FROM customers c INNER JOIN orders o ON(c.customer_id = o.customer_id)
 INNER JOIN orderline ol ON (o.order_id = ol.order_id) INNER JOIN items i on (i.item_id = ol.item_id)
 WHERE c.city = 'milltown' AND o.date_delivery BETWEEN '2025-05-01' AND '2025-05-31' 
 
+top 1 selling items from milltown for the month of may
+SELECT c.city, i.name, ol.quantity 
+FROM customers c INNER JOIN orders o ON(c.customer_id = o.customer_id) 
+INNER JOIN orderline ol ON (o.order_id = ol.order_id) INNER JOIN items i on (i.item_id = ol.item_id)
+WHERE c.city = 'milltown' AND o.date_delivery BETWEEN '2025-05-01' AND '2025-05-31'
+ORDER BY quantity DESC
+LIMIT 1
 
 
 
