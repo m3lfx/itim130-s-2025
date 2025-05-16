@@ -327,3 +327,18 @@ AND o.order_id = ol.order_id
 AND i.item_id = ol.item_id
 AND c.city IN ('nicetown', 'bingham', 'milltown')
 
+SELECT o.order_id, c.last_name, c.address, c.city, o.date_ordered, ol.item_id, i.name, ol.quantity
+FROM customers c INNER JOIN orders o ON(c.customer_id = o.customer_id) 
+INNER JOIN orderline ol ON (o.order_id = ol.order_id) INNER JOIN items i on (i.item_id = ol.item_id)
+WHERE c.city IN ('nicetown', 'bingham')
+
+items inner join orderline inner join orders inner join customers
+
+SELECT o.order_id, c.last_name, c.address, DATE_FORMAT(o.date_ordered, '%D of %M %Y'), ol.item_id, i.name, ol.quantity
+FROM customers c INNER JOIN orders o ON(c.customer_id = o.customer_id) 
+INNER JOIN orderline ol ON (o.order_id = ol.order_id) INNER JOIN items i on (i.item_id = ol.item_id)
+WHERE c.customer_id = 15
+ORDER BY o.order_id
+
+
+
