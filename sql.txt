@@ -368,7 +368,38 @@ WHERE c.city = 'milltown' AND o.date_delivery BETWEEN '2025-05-01' AND '2025-05-
 ORDER BY quantity DESC
 LIMIT 1
 
+aggregate functions 
 
+total customers 
+SELECT count(*) FROM customers;
+
+SELECT count(last_name) FROM customers;
+
+UPDATE customers SET phone = NULL
+WHERE customer_id = 1
+
+SELECT count(phone) FROM customers;
+
+total items sold
+
+SELECT sum(quantity) FROM orderline
+
+total income
+order_total = order_total + (sell_price * quantity) 
+sum(sell_price * quantity)
+
+SELECT sum(i.sell_price * ol.quantity)
+FROM items i INNER JOIN orderline ol ON (i.item_id = ol.item_id)
+
+select i.name, max(ol.quantity) as qty
+FROM items i INNER JOIN orderline ol ON (i.item_id = ol.item_id)
+
+
+get grand total of a specific 
+SELECT o.order_id, c.first_name, sum(i.sell_price * ol.quantity)
+FROM customers c INNER JOIN orders o ON(c.customer_id = o.customer_id) 
+INNER JOIN orderline ol ON (o.order_id = ol.order_id) INNER JOIN items i on (i.item_id = ol.item_id)
+WHERE o.order_id = 8
 
 
 
