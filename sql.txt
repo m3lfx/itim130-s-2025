@@ -340,5 +340,12 @@ INNER JOIN orderline ol ON (o.order_id = ol.order_id) INNER JOIN items i on (i.i
 WHERE c.customer_id = 15
 ORDER BY o.order_id
 
+fetch all items that were bought on may 2025.
+
+SELECT i.name, o.date_ordered, ol.quantity 
+FROM orders o INNER JOIN orderline ol ON (o.order_id = ol.order_id) INNER JOIN items i on (i.item_id = ol.item_id)
+WHERE o.date_ordered BETWEEN '2025-05-01' AND '2025-05-31'
+
+
 
 
