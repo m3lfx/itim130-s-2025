@@ -395,11 +395,31 @@ select i.name, max(ol.quantity) as qty
 FROM items i INNER JOIN orderline ol ON (i.item_id = ol.item_id)
 
 
-get grand total of a specific 
+get grand total of a specific order 
 SELECT o.order_id, c.first_name, sum(i.sell_price * ol.quantity)
 FROM customers c INNER JOIN orders o ON(c.customer_id = o.customer_id) 
 INNER JOIN orderline ol ON (o.order_id = ol.order_id) INNER JOIN items i on (i.item_id = ol.item_id)
 WHERE o.order_id = 8
+
+GROUP BY clause
+
+count number of customers per city
+SELECT city, count(*) FROM customers
+GROUP BY city
+;
+count the number of orders for each month for this year
+SELECT monthname(date_ordered), count(date_ordered)
+FROM orders
+GROUP BY month(date_ordered)
+get the total quantity sold for each item.
+get the total for each order 
+get the customer name and total payment  
+
+how much did each customer spend on our store
+get the profit for each product
+top 3 best selling items
+get the profit for each city
+get the profit for each month
 
 
 
