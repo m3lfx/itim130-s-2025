@@ -430,9 +430,16 @@ SELECT concat(first_name, " ", last_name) as `customer name`, ol.order_id, sum(o
 FROM customers c INNER JOIN orders o ON (c.customer_id = o.customer_id)
 INNER JOIN orderline ol ON (o.order_id = ol.order_id) 
 INNER JOIN items i ON (i.item_id = ol.item_id)
-GROUP BY ol.order_id  
+GROUP BY o.order_id  
 
 how much did each customer spend on our store
+SELECT concat(first_name, " ", last_name) as `customer name`, sum(ol.quantity * i.sell_price) AS total
+FROM customers c INNER JOIN orders o ON (c.customer_id = o.customer_id)
+INNER JOIN orderline ol ON (o.order_id = ol.order_id) 
+INNER JOIN items i ON (i.item_id = ol.item_id)
+GROUP BY c.first_name, c.last_name
+ORDER BY total DESC
+
 get the profit for each product
 top 3 best selling items
 get the profit for each city
