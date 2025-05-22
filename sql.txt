@@ -441,9 +441,33 @@ GROUP BY c.first_name, c.last_name
 ORDER BY total DESC
 
 get the profit for each product
+SELECT  ol.item_id, i.name, sum(ol.quantity * i.sell_price) AS total
+FROM items i INNER JOIN orderline ol ON (i.item_id = ol.item_id)
+GROUP BY ol.item_id
+
+
 top 3 best selling items
+SELECT  ol.item_id, i.name, sum(ol.quantity * i.sell_price) AS total
+FROM items i INNER JOIN orderline ol ON (i.item_id = ol.item_id)
+GROUP BY ol.item_id
+ORDER BY total DESC
+LIMIT 3
+
 get the profit for each city
-get the profit for each month
+SELECT c.city, sum(ol.quantity * i.sell_price) AS total
+FROM customers c INNER JOIN orders o ON (c.customer_id = o.customer_id)
+INNER JOIN orderline ol ON (o.order_id = ol.order_id) 
+INNER JOIN items i ON (i.item_id = ol.item_id)
+GROUP BY c.city
+ORDER BY total DESC
+
+get the profit for each month this year
+
+SELECT monthname(o.date_delivery), sum(ol.quantity * i.sell_price) AS total
+FROM orders o INNER JOIN orderline ol ON (o.order_id = ol.order_id)
+INNER JOIN items i ON (i.item_id = ol.item_id)
+WHERE o.date_delivery BETWEEN '2025-01-01' AND '2025-12-31'
+GROUP BY month(o.date_delivery)
 
 
 
