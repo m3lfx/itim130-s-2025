@@ -690,6 +690,7 @@ End Class
 //items crud 
 Try
             conn.Open()
+            sql = "SELECT i.item_id AS 'id', i.name AS name, i.cost_price AS cost, i.sell_price as `SELling price`, s.quantity FROM items i INNER  JOIN stocks s ON (i.item_id = s.item_id) ORDER BY i.item_id DESC"
             sql = "SELECT i.item_id, i.description, i.cost_price, i.sell_price, s.quantity FROM item i LEFT OUTER JOIN stock s ON i.item_id = s.item_id ORDER BY i.item_id DESC"
             dbcomm = New MySqlCommand(sql, conn)
             DataAdapter1 = New MySqlDataAdapter(sql, conn)
