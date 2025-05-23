@@ -615,6 +615,7 @@ Public Class Form1
         Dim phone = TextBox8.Text
         Try
             conn.Open()
+                sql = $"INSERT INTO customers (first_name, last_name, address, city, phone, zipcode2) VALUES ('{firstName}','{lastName}', '{address}', '{city}', '{phone}', '{zip}')"
             sql = "INSERT INTO customer (title, fname, lname, addressline, town, zipcode, phone) VALUES ('" & title & "','" & firstName & "','" & lastName & "','" & address & "','" & town & "','" & zip & "','" & phone & "')"
             dbcomm = New MySqlCommand(sql, conn)
             Dim i As Integer = dbcomm.ExecuteNonQuery
