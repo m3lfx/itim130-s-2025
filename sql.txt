@@ -936,7 +936,8 @@ MySQL Changing Password for Accounts
 USE mysql;
  
 ALTER USER dbadmin1@localhost IDENTIFIED BY 'p@ssw0rd1234';
- 
+ALTER USER root@localhost IDENTIFIED BY 'your password';
+ ALTER USER itim130s@localhost IDENTIFIED BY 'p@ssw0rd';
 FLUSH PRIVILEGES; 
 
 FLUSH PRIVILEGES statement to reload privileges from the grant table in the mysql database.
@@ -947,6 +948,7 @@ ON [object_type] privilege_level
 TO account [IDENTIFIED BY 'password']
  
 GRANT ALL ON db_sales_s_2025.* to 'dbadmin1'@'localhost';
+GRANT ALL ON db_sales_s_2025.* to 'itim130s'@'localhost';
 
 GRANT ALL ON db_sales_s_2025.* to itim130s@'%' IDENTIFIED BY 'password';
 
