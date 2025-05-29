@@ -971,6 +971,24 @@ mysql backup /restore using mysqldump
 mysqldump -u [username] -p[password] [database_name,db2,db3...] > /path/to/[dump_file.sql]
 mysql -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 
+/transaction
+BEGIN;
+UPDATE items SET cost_price = 100.00 WHERE item_id =13;
+COMMIT;
+ROLLBACK
+
+BEGIN; 
+SELECT * FROM customers WHERE customer_id = 45;
+INSERT INTO orders(date_ordered, date_delivery, status, customer_id)
+VALUES(now(), NULL, 'processing', 45);
+INSERT INTO orderline (order_id, item_id, quantity)
+VALUES(LAST_INSERT_ID(), 19, 2), (LAST_INSERT_ID(), 20, 4),(LAST_INSERT_ID(), 21, 10);
+
+UPDATE stocks SET quantity = quantity - 2 WHERE item_id = 19;
+UPDATE stocks SET quantity = quantity - 4 WHERE item_id = 20;
+UPDATE stocks SET quantity = quantity - 10 WHERE item_id = 21;
+COMMIT
+
 
 
 
