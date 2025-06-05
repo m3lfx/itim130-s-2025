@@ -1150,7 +1150,63 @@ Dim i As Integer = 0
         conn.Close()
 
 
+Imports MySql.Data.MySqlClient
+Public Class Form4
 
+    Dim conn As MySqlConnection = New MySqlConnection("Data Source=localhost;Database=itim130s;User=itim130s;Password=p@ssw0rd;")
+    'Public dbconn As New MySqlConnection
+    Public sql As String
+    Public dbcomm As MySqlCommand
+    Public dbread As MySqlDataReader
+    Public DataAdapter1 As MySqlDataAdapter
+    Public ds As DataSet
+    Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Try
+            conn.Open()
+            'select customer name address orderid total
+            'SELECT ol.order_id, sum(ol.quantity * i.sell_price) AS total
+            'From items i INNER Join orderline ol ON (i.item_id = ol.item_id)
+            'Group By ol.order_id
+            sql = $"SELECT concat(c.first_name, c.last_name) as name, ol.order_id, sum(ol.quantity * i.sell_price) AS total FROM customers c INNER JOIN orders o ON c.customer_id = o.customer_id INNER JOIN orderline ol ON o.order_id = ol.order_id INNER JOIN items i ON i.item_id = ol.item_id GROUP BY ol.order_id"
+
+            DataAdapter1 = New MySqlDataAdapter(sql, conn)
+            ds = New DataSet()
+            DataAdapter1.Fill(ds, "orders")
+            DataGridView1.DataSource = ds
+            DataGridView1.DataMember = "orders"
+            Dim cmb As New DataGridViewComboBoxColumn()
+            cmb.HeaderText = "status"
+            cmb.Name = "cmb"
+
+            cmb.Items.Add("processing")
+            cmb.Items.Add("Delivered")
+            cmb.Items.Add("canceled")
+            Dim btn As New DataGridViewButtonColumn
+            btn.HeaderText = "submit"
+            btn.Text = "update"
+            btn.Name = "btn"
+            btn.UseColumnTextForButtonValue = True
+
+            DataGridView1.Columns.Add(cmb)
+            DataGridView1.Columns.Add(btn)
+        Catch ex As MySqlException
+            MsgBox("Error in collecting data from Database. Error is :" & ex.Message)
+            conn.Close()
+        Catch ex As Exception
+            MsgBox("Error in collecting data from Database. Error is :" & ex.Message)
+            conn.Close()
+
+        End Try
+
+        conn.Close()
+
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+End Class
 
 
 
