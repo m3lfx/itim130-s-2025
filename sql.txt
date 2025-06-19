@@ -1244,3 +1244,58 @@ Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCe
         conn.Close()
     End Sub
 
+1.	Fetch all students and their respective course that live in USA.
+SELECT s.last_name, c.course_id, c.title, c.address
+FROM courses c INNER JOIN students s ON c.course_id = s.course_id
+WHERE s.address = 'usa'
+
+2. Fetch all students, the subjects they enrolled and the grades they received.
+
+SELECT st.last_name, st.first_name, su.code, su.name, ss.grade
+FROM subjects su INNER JOIN student_subjects ss ON su.subject_id = ss.subject_id INNER JOIN students st ON st.student_id = ss.student_id
+
+3.	Fetch all students with “reyes” on their last name.
+
+SELECT last_name
+FROM students
+WHERE last_name LIKE '%reyes%'
+
+4.	Create a new BSIT student.
+INSERT INTO (course_id, last_name, first_name, address)
+VALUES(1, 'FOO', 'bar', 'taguig')
+
+5.	enroll the newly created student to the subject  ITCP329.
+INSERT INTO student_subject (student_id, subject_id, grade) 
+VALUES(10, 6, NULL)
+
+6.	Update the grade of the newly created student to “1.75”.
+
+UPDATE student_subject SET grade = 1.75
+WHERE student_id = 10
+
+7.	Fetch all students with a grade of “5.0” in the subject ITIM130
+
+SELECT st.last_name, st.first_name, su.code, su.name, ss.grade
+FROM subjects su INNER JOIN student_subjects ss ON su.subject_id = ss.subject_id INNER JOIN students st ON st.student_id = ss.student_id
+WHERE ss.grade = '5.0' AND ss.subject_id = 1
+WHERE ss.grade = '5.0' AND su.code = 'itim130'
+WHERE ss.grade = 5.0 AND su.name = 'rdbms'
+
+8.	Delete all students from the USA or from Canada.
+
+DELETE 
+FROM students
+WHERE address = 'usa' OR address = 'canada'
+WHERE address IN ('usa', 'canada')
+
+
+9.	Get all students that are enrolled in MATH1.
+SELECT st.last_name, st.first_name, su.code, su.name, 
+FROM subjects su INNER JOIN student_subjects ss ON su.subject_id = ss.subject_id INNER JOIN students st ON st.student_id = ss.student_id
+WHERE ss.subject_id = 2 AND su.name = 'MATH1'
+WHERE su.name = 'MATH1'
+
+Change the number of units of Machine design subject to 3
+UPDATE subjects SET units = '3.0'
+WHERE subject_id = 4
+WHERE code = 'MEPL 413'
