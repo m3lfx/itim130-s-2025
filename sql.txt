@@ -1316,7 +1316,81 @@ FROM orders o RIGHT OUTER JOIN customers c ON c.customer_id = o.customer_id
 JOIN orderline ol ON o.order_id = ol.order_id
 
 CREATE table users (
-    user_id INT NOT NULL PRIMARY KEY,
+    user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email TEXT NOT NULL,
     password TEXT NOT NULL
 ) 
+SELECT 1 From users where email = 'user@gmail.com' AND password = SHA1('password')
+
+Imports MySql.Data.MySqlClient
+Public Class Form5
+    Dim conn As MySqlConnection = New MySqlConnection("Data Source=localhost;Database=itim130s;User=itim130s;Password=p@ssw0rd;")
+    'Public dbconn As New MySqlConnection
+    Public sql As String
+    Public dbcomm As MySqlCommand
+    Public dbread As MySqlDataReader
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim email As String = TextBox1.Text
+        Dim password As String = TextBox2.Text
+        Try
+            conn.Open()
+
+            sql = $"INSERT INTO users (email, password) VALUES('{email}', SHA1('{password}'))"
+            Label1.Text = sql
+
+            dbcomm = New MySqlCommand(sql, conn)
+
+            Dim i As Integer = dbcomm.ExecuteNonQuery
+            If (i > 0) Then
+                MsgBox("record saved")
+            Else
+                MsgBox("record not saved")
+
+            End If
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+            conn.Close()
+        End Try
+        conn.Close()
+
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim email As String = TextBox1.Text
+        Dim password As String = TextBox2.Text
+        Try
+            conn.Open()
+
+            sql = $"SELECT 1 FROM users WHERE email = '{email}' AND password = SHA1('{password}')"
+            Label1.Text = sql
+            dbcomm = New MySqlCommand(sql, conn)
+            dbread = dbcomm.ExecuteReader()
+            'dbread.Read()
+            If (dbread.Read) Then
+                Me.Hide()
+
+                Form3.Show()
+            Else
+                MsgBox("invalid email or password")
+            End If
+
+
+
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+            conn.Close()
+        End Try
+        conn.Close()
+    End Sub
+End Class
