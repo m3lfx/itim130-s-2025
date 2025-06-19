@@ -1209,5 +1209,38 @@ Public Class Form4
 End Class
 
 
+Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        If e.ColumnIndex >= 0 AndAlso e.RowIndex >= 0 Then
+            TextBox1.Text = DataGridView1.Rows(e.RowIndex).Cells(0).Value.ToString
+            TextBox2.Text = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString
+        End If
 
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+            conn.Open()
+            sql = $"UPDATE orders SET status = '{ComboBox1.SelectedItem.ToString}' WHERE order_id = {Val(TextBox2.Text)}"
+            Label1.Text = sql
+            dbcomm = New MySqlCommand(sql, conn)
+            Dim i As Integer = dbcomm.ExecuteNonQuery
+            If (i > 0) Then
+                MsgBox("record saved")
+            Else
+                MsgBox("record not saved")
+
+            End If
+
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            conn.Close()
+
+        End Try
+
+        conn.Close()
+    End Sub
 
