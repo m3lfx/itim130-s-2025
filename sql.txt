@@ -1315,3 +1315,8 @@ SELECT c.last_name, o.order_id, o.date_ordered
 FROM orders o RIGHT OUTER JOIN customers c ON c.customer_id = o.customer_id 
 JOIN orderline ol ON o.order_id = ol.order_id
 
+CREATE table users (
+    user_id INT NOT NULL PRIMARY KEY,
+    email TEXT NOT NULL,
+    password TEXT NOT NULL
+) 
