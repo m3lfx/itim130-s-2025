@@ -1394,3 +1394,62 @@ Public Class Form5
         conn.Close()
     End Sub
 End Class
+
+1.	Fetch all the albums of the group black pink get the album title, band name and release date
+
+SELECT ar.name, al.title, al.date_released
+FROM artists ar INNER JOIN albums al ON ar.artist_id = al.artist_id 
+WHERE ar.name = 'black pink'
+
+2.	Fetch all the albums and its songs of the band the beatles. get the album title, band name, song title
+
+SELECT ar.name, al.title, s.title
+FROM artists ar INNER JOIN albums al ON ar.artist_id = al.artist_id INNER JOIN songs s al.album_id = s.album_id
+WHERE ar.name = 'the beatles'
+
+3.	Fetch all albums with songs that is not cool or not nice in its description, get album title, song title and description
+
+SELECT 
+FROM albums al INNER JOIN songs s ON al.album_id = s.album_id
+WHERE s.description <> 'nice' OR s.description != 'cool'
+WHERE s.description NOT IN ('nice', 'cool')
+
+4.	Create a new listener that has an album of BINI.
+INSERT INTO listeners (name, email, address)
+VALUES('foo', 'foo@gmail.com', 'tenement')
+
+INSERT INTO album_listener(listener_id, album_id, review) VALUES(1, 4, NULL)
+
+5.	The newly created listener Updates the album review of Talaarawan.
+UPDATE album_listener SET review = 'ok na yan'
+WHERE   listener_id = 1
+
+6.	Create a new album titled “ride the lightning” by metallica
+INSERT INTO albums (title, genre, date_released, artist_id) VALUES('ride the lightning', 'pop', '2025-01-09', 4)
+
+INSERT INTO albums (title, genre, date_released, artist_id) VALUES('ride the lightning', 'pop', now(), 4)
+
+7.	Insert songs  “call of ktulu” and “fade to black” on the album “ride the lightning”. Use one insert statement
+INSERT INTO songs (title, description, album_id)
+VALUES('call of ktulu', 'ok', 7), ('fade to black', 'k', 7)
+
+8.	Fetch all listeners, the albums they listen to, and the songs included on those albums, get only the listener name, artist name, album title, album genre and song title.
+
+SELECT l.name, ar.name, al.title, s.title, al.genre
+FROM artists ar INNER JOIN albums al ON ar.artist_id = al.artist_id 
+INNER JOIN songs s ON al.album_id = s.album_id
+INNER album_listener al_li ON al.album_id = al_li.album_id 
+INNER JOIN listeners l ON l.listener_id = al_li.listener_id
+
+9.	Delete all albums by black pink
+DELETE FROM albums WHERE artist_id = 1
+DELETE FROM artists ar INNER JOIN albums al ON ar.artist_id = al.artist_id
+WHERE ar.name = 'black pink'
+
+10.	Fetch artists that has an album with “pop” genre. Get the artist name, album title and genre
+
+SELECT ar.name, al.title, al.genre
+FROM artists ar INNER JOIN albums al ON ar.artist_id = al.artist_id
+WHERE al.genre LIKE '%pop%'
+
+
