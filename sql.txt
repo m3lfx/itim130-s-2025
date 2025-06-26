@@ -1452,4 +1452,3 @@ SELECT ar.name, al.title, al.genre
 FROM artists ar INNER JOIN albums al ON ar.artist_id = al.artist_id
 WHERE al.genre LIKE '%pop%'
 
-
